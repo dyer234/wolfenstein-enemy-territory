@@ -1,0 +1,11 @@
+
+services:
+  et-server:
+    build: .
+    ports:
+      - "27960:27960"
+    volumes:
+       - ./start.sh:/start.sh
+       - ./.etlegacy:/root/.etlegacy
+    env_file:
+      - env
