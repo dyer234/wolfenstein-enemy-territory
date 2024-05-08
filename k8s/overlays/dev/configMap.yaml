@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: etlegacy-env-config
+  labels:
+    app: etlegacy
+data:
+  ET_HOSTNAME: "LOCAL DEV ET"
+  ET_REFEREEPASSWORD: "Start123!"
+  ET_RCONPASSWORD: "Start123!"

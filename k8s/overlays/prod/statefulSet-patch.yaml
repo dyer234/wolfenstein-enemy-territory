@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: etlegacy-deployment
+spec:
+  template:
+    spec:
+      volumes:
+      - name: etlegacy-storage
+        persistentVolumeClaim:
+          claimName: etlegacy-pvc

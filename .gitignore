@@ -1,1 +1,2 @@
 .etlegacy/*
+k8s/overlays/prod/secrets.yaml

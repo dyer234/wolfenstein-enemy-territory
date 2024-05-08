@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: etlegacy-deployment
+  labels:
+    app: etlegacy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: etlegacy
+  template:
+    metadata:
+      labels:
+        app: etlegacy
+    spec:
+      containers:
+      - name: etlegacy
+        image: wolfenstein-enemy-territory-et-server:latest
+        imagePullPolicy: Never
+        env:
+        - name: ET_RCONPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: etlegacy-secret
+              key: rconpassword
+        - name: ET_REFEREEPASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: etlegacy-secret
+              key: refereepassword
+        ports:
+        - containerPort: 27960
+          protocol: UDP
+        envFrom:
+        - configMapRef:
+            name: etlegacy-env-config  # Reference to the ConfigMap
+        volumeMounts:
+        - name: etlegacy-storage
+          mountPath: /root/.etlegacy

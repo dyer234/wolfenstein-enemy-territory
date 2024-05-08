@@ -1,0 +1,12 @@
+bases:
+  - ../../base
+
+resources:
+  - persistentVolume.yaml
+  - persistentVolumeClaim.yaml
+  - service.yaml
+  - configMap.yaml
+  - secrets.yaml
+
+patchesStrategicMerge:
+  - statefulSet-patch.yaml
