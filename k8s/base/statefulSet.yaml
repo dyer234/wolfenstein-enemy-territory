@@ -16,8 +16,8 @@ spec:
     spec:
       containers:
       - name: etlegacy
-        image: wolfenstein-enemy-territory-et-server:latest
-        imagePullPolicy: Never
+        image: ghcr.io/dyer234/wolfenstein-enemy-territory:main
+        imagePullPolicy: Always
         env:
         - name: ET_RCONPASSWORD
           valueFrom:
@@ -38,3 +38,12 @@ spec:
         volumeMounts:
         - name: etlegacy-storage
           mountPath: /root/.etlegacy
+  volumeClaimTemplates:
+  - metadata:
+      name: etlegacy-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: do-block-storage

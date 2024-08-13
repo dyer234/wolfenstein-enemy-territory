@@ -2,9 +2,6 @@ bases:
   - ../../base
 
 resources:
-  - statefulSet.yaml
-  - persistentvolumeclaim.yaml
   - configMap.yaml
-
-patchesStrategicMerge:
-  - statefulSet-patch.yaml
+  - secrets.yaml
+  - service.yaml

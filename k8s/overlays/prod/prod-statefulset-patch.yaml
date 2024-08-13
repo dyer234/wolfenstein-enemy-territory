@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: etlegacy-statefulset
+spec:
+  volumeClaimTemplates:
+  - metadata:
+      name: etlegacy-storage
+    spec:
+      storageClassName: do-block-storage

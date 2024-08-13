@@ -10,3 +10,12 @@ spec:
         hostPath:
           path: /opt/data/etlegacy  # Local filesystem path
           type: DirectoryOrCreate
+  volumeClaimTemplates:
+  - metadata:
+      name: etlegacy-storage
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: hostpath  # StorageClass name
